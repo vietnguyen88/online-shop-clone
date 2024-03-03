@@ -8,6 +8,7 @@ import {
   Bars3Icon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
+import { useSelector } from "react-redux";
 
 const navigation = [
   {
@@ -35,6 +36,8 @@ const navigation = [
 ];
 
 const Navbar = () => {
+  const cart = useSelector((state) => state.cart.cart_number);
+
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -92,6 +95,7 @@ const Navbar = () => {
           <Link href={"/"}>Search</Link>
           <Link href={"/"}>Help</Link>
           <ShoppingCartIcon className="h-5" />
+          {cart}
           {isOpen ? (
             <XMarkIcon
               className="h-5 sm:hidden cursor-pointer"

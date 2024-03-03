@@ -1,5 +1,8 @@
+"use client";
 import Image from "next/image";
 import React from "react";
+import { useDispatch } from "react-redux";
+import { increase } from "../redux/cartSlice";
 
 const database = [
   {
@@ -51,6 +54,7 @@ const database = [
 
 const CardItem = ({ item }) => {
   const { name, url, img_url, desc, price } = item;
+  const dispatch = useDispatch();
   return (
     <figure className="">
       <div className="h-64">
@@ -68,7 +72,10 @@ const CardItem = ({ item }) => {
           <p>{price}</p>
         </div>
         <p className="text-slate-400">{desc}</p>
-        <button className="bg-slate-200 w-full py-1 rounded-sm hover:opacity-80">
+        <button
+          className="bg-slate-200 w-full py-1 rounded-sm hover:opacity-80"
+          onClick={() => dispatch(increase())}
+        >
           Add to bag
         </button>
       </figcaption>
