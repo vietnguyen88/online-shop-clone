@@ -8,9 +8,13 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        "hero-img": "url('../public/images/hero_bg.jpg')",
+        "gradient-radial":
+          "radial-gradient(circle at bottom, var(--tw-gradient-stops))",
+      },
+      gridTemplateColumns: {
+        "auto-fill-160": "repeat(auto-fill, minmax(160px, 1fr))",
+        "auto-fit-160": "repeat(auto-fit, minmax(160px, 1fr))",
       },
     },
   },
