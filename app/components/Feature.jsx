@@ -1,22 +1,24 @@
 import Image from "next/image";
 import React from "react";
+import { database } from "../db/database";
 
-const CardItem = () => {
+const CardItem = ({ item }) => {
+  const { name, url, price, img_url, desc } = item;
   return (
-    <figure className=" w-40  ">
+    <figure className=" w-40 hover:opacity-80 cursor-pointer">
       <Image
         className=" h-56 w-full object-cover rounded-sm"
-        src="https://images.unsplash.com/photo-1512054502232-10a0a035d672?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        src={img_url}
         height={200}
         width={200}
         alt=""
       />
-      <figcaption className="  border-none  text-white text-center">
+      <figcaption className=" border-none text-white text-center">
         <div className="flex justify-between text-xs">
-          <h3 className="">iPhone</h3>
-          <p>$200</p>
+          <h3 className="">{name}</h3>
+          <p>{price}</p>
         </div>
-        <p className="text-xs italic text-left">3 colors available</p>
+        <p className="text-xs italic text-left">{desc}</p>
       </figcaption>
     </figure>
   );
@@ -33,10 +35,9 @@ const Feature = () => {
         veniam aliqua proident excepteur commodo do ea.
       </div>
       <div className="px-2 py-7 flex flex-wrap gap-5 justify-center">
-        <CardItem />
-        <CardItem />
-        <CardItem />
-        <CardItem />
+        {database.map((item) => (
+          <CardItem key={item.id} item={item} />
+        ))}
       </div>
     </section>
   );
