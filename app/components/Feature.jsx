@@ -3,7 +3,7 @@ import React from "react";
 import { database } from "../db/database";
 
 const CardItem = ({ item }) => {
-  const { name, url, price, img_url, desc } = item;
+  const { name, price, img_url, desc } = item;
   return (
     <figure className=" w-40 hover:opacity-80 cursor-pointer">
       <Image
@@ -16,7 +16,7 @@ const CardItem = ({ item }) => {
       <figcaption className=" border-none text-white text-center">
         <div className="flex justify-between text-xs">
           <h3 className="">{name}</h3>
-          <p>{price}</p>
+          <p>${price}</p>
         </div>
         <p className="text-xs italic text-left">{desc}</p>
       </figcaption>
@@ -35,7 +35,7 @@ const Feature = () => {
         veniam aliqua proident excepteur commodo do ea.
       </div>
       <div className="px-2 py-7 flex flex-wrap gap-5 justify-center">
-        {database.map((item) => (
+        {database.slice(0, 5).map((item) => (
           <CardItem key={item.id} item={item} />
         ))}
       </div>

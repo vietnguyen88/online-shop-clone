@@ -94,8 +94,11 @@ const Navbar = () => {
         <div className="flex gap-2 text-xs items-center">
           <Link href={"/"}>Search</Link>
           <Link href={"/"}>Help</Link>
-          <ShoppingCartIcon className="h-5" />
-          {cart}
+          <Link href={"/cart"}>
+            <ShoppingCartIcon className="h-5" />
+            {cart}
+          </Link>
+
           {isOpen ? (
             <XMarkIcon
               className="h-5 sm:hidden cursor-pointer"
